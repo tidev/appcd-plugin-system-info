@@ -254,7 +254,7 @@ class SystemInfoService extends DataServiceDispatcher {
 			return false;
 		};
 
-		let npmPkgJson = checknpmPath(prefix);
+		let npmPkgJson = prefix && checknpmPath(prefix);
 		if (!npmPkgJson) {
 			prefix = process.platform === 'win32' ? '%ProgramFiles%\\nodejs' : '/usr/local';
 			// on Linux and macOS, the `node_modules` is inside a `lib` directory
