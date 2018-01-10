@@ -23,6 +23,7 @@ const dependencies = {
 	genymotion: '/genymotion/1.x/info',
 	ios:        '/ios/1.x/info',
 	jdks:       '/jdk/1.x/info',
+	titanium:   '/titanium-sdk/1.x/info',
 	windows:    '/windows/1.x/info'
 };
 
@@ -81,6 +82,9 @@ class SystemInfoService extends DataServiceDispatcher {
 
 			// subscribe to jdk service
 			this.wireup('jdks'),
+
+			// subscribe to titanium-sdk service
+			this.wireup('titanium'),
 
 			// subscribe to windows service
 			process.platform === 'win32' && this.wireup('windows')
