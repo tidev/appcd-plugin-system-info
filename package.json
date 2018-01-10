@@ -16,18 +16,18 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "gawk": "^4.4.4",
+    "gawk": "^4.4.5",
     "source-map-support": "^0.5.0"
   },
   "devDependencies": {
-    "appcd-gulp": "^1.0.0",
+    "appcd-gulp": "^1.0.1",
     "gulp": "^3.9.1"
   },
-  "homepage": "https://github.com/appcelerator/appc-daemon#readme",
-  "bugs": "https://github.com/appcelerator/appc-daemon/issues",
+  "homepage": "https://github.com/appcelerator/appcd-plugin-system-info#readme",
+  "bugs": "https://github.com/appcelerator/appcd-plugin-system-info/issues",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/appcelerator/appc-daemon.git"
+    "url": "git+https://github.com/appcelerator/appcd-plugin-system-info.git"
   },
   "appcd": {
     "appcdVersion": "1.x",
