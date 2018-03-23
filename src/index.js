@@ -19,12 +19,13 @@ import { isFile } from 'appcd-fs';
  * @type {Object}
  */
 const dependencies = {
-	android:    '/android/1.x/info',
-	genymotion: '/genymotion/1.x/info',
-	ios:        '/ios/1.x/info',
-	jdks:       '/jdk/1.x/info',
-	titanium:   '/titanium-sdk/1.x/info',
-	windows:    '/windows/1.x/info'
+	android:            '/android/1.x/info',
+	genymotion:         '/genymotion/1.x/info',
+	ios:                '/ios/1.x/info',
+	jdks:               '/jdk/1.x/info',
+	'titanium/sdks':    '/titanium-sdk/1.x/sdk',
+	'titanium/modules': '/titanium-sdk/1.x/module',
+	windows:            '/windows/1.x/info'
 };
 
 /**
@@ -84,7 +85,8 @@ class SystemInfoService extends DataServiceDispatcher {
 			this.wireup('jdks'),
 
 			// subscribe to titanium-sdk service
-			this.wireup('titanium'),
+			this.wireup('titanium/sdks'),
+			this.wireup('titanium/modules'),
 
 			// subscribe to windows service
 			process.platform === 'win32' && this.wireup('windows')
@@ -142,14 +144,24 @@ class SystemInfoService extends DataServiceDispatcher {
 						if (data.type === 'subscribe') {
 							this.subscriptions[type] = data.sid;
 						} else if (data.type === 'event' && data.message && typeof data.message === 'object') {
-							if (!this.data[type]) {
-								this.data[type] = {};
+							const segments = type.split('/');
+							const key = segments.pop();
+							let dest = this.data;
+
+							for (const segment of segments) {
+								if (!dest[segment]) {
+									dest[segment] = {};
+								}
+								dest = dest[segment];
 							}
 
 							if (Array.isArray(data.message)) {
-								this.data[type] = data.message;
+								dest[key] = data.message;
 							} else {
-								gawk.set(this.data[type], data.message);
+								if (!dest[key]) {
+									dest[key] = {};
+								}
+								gawk.set(dest[key], data.message);
 							}
 
 							resolve();
