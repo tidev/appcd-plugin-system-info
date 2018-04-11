@@ -23,8 +23,8 @@ const dependencies = {
 	genymotion:         '/genymotion/1.x/info',
 	ios:                '/ios/1.x/info',
 	jdks:               '/jdk/1.x/info',
-	'titanium/sdks':    '/titanium-sdk/1.x/sdk',
-	'titanium/modules': '/titanium-sdk/1.x/module',
+	'titanium/sdks':    '/titanium-sdk/1.x/sdk/list/installed',
+	'titanium/modules': '/titanium-sdk/1.x/modules/list/installed',
 	windows:            '/windows/1.x/info'
 };
 
