@@ -1,6 +1,6 @@
 {
   "name": "appcd-plugin-system-info",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "The Appc Daemon plugin for detecting system info.",
   "main": "./dist/index",
   "author": "Appcelerator, Inc. <npmjs@appcelerator.com>",
@@ -30,7 +30,7 @@
     "url": "git+https://github.com/appcelerator/appcd-plugin-system-info.git"
   },
   "appcd": {
-    "appcdVersion": "1.x",
+    "appcdVersion": "1.x || 2.x",
     "name": "system-info",
     "type": "external"
   }
