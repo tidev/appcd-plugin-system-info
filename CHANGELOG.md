@@ -4,6 +4,10 @@
  * Update dependencies
  * Fixed lint warnings.
  * Refactored promises to use async/await.
+ * Initialize the data destination before requesting data from an external plugin.
+ * Improved code efficiency by caching the data destination instead of computing it ever data
+   event.
+ * No longer errors out when an external plugin cannot be reached.
 
 # v1.2.0 (Oct 25, 2018)
 

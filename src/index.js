@@ -23,8 +23,8 @@ const dependencies = {
 	genymotion:         '/genymotion/1.x/info',
 	ios:                '/ios/1.x/info',
 	jdks:               '/jdk/1.x/info',
-	'titanium/sdks':    '/titanium-sdk/1.x/sdk/list/installed',
-	'titanium/modules': '/titanium-sdk/1.x/modules/list/installed',
+	'titanium/sdks':    '/titanium/1.x/sdk/list',
+	'titanium/modules': '/titanium/1.x/modules/list',
 	windows:            '/windows/1.x/info'
 };
 
@@ -134,42 +134,57 @@ class SystemInfoService extends DataServiceDispatcher {
 	 * @access private
 	 */
 	async wireup(type) {
-		const endpoint = dependencies[type];
-		const { response } = await appcd.call(endpoint, { type: 'subscribe' });
+		try {
+			const endpoint = dependencies[type];
+			const segments = type.split('/');
+			const key = segments.pop();
 
-		response.on('end', () => {
-			delete this.subscriptions[type];
-		});
-
-		await new Promise(resolve => {
-			response.on('data', data => {
-				if (data.type === 'subscribe') {
-					this.subscriptions[type] = data.sid;
-				} else if (data.type === 'event' && data.message && typeof data.message === 'object') {
-					const segments = type.split('/');
-					const key = segments.pop();
-					let dest = this.data;
-
-					for (const segment of segments) {
-						if (!dest[segment]) {
-							dest[segment] = {};
-						}
-						dest = dest[segment];
+			const getDest = () => {
+				let dest = this.data;
+				for (const segment of segments) {
+					if (!dest[segment]) {
+						dest[segment] = {};
 					}
-
-					if (Array.isArray(data.message)) {
-						dest[key] = data.message;
-					} else {
-						if (!dest[key]) {
-							dest[key] = {};
-						}
-						gawk.set(dest[key], data.message);
-					}
-
-					resolve();
+					dest = dest[segment];
 				}
+				if (!dest[key]) {
+					dest[key] = {};
+				}
+				return dest;
+			};
+
+			// initialize the dest
+			getDest();
+
+			const { response } = await appcd.call(endpoint, { type: 'subscribe' });
+
+			response.on('end', () => {
+				delete this.subscriptions[type];
 			});
-		});
+
+			await new Promise(resolve => {
+				response.on('data', data => {
+					if (data.type === 'subscribe') {
+						this.subscriptions[type] = data.sid;
+					} else if (data.type === 'event' && data.message && typeof data.message === 'object') {
+						let dest = getDest();
+
+						if (Array.isArray(data.message)) {
+							dest[key] = data.message;
+						} else {
+							if (!dest[key]) {
+								dest[key] = {};
+							}
+							gawk.set(dest[key], data.message);
+						}
+
+						resolve();
+					}
+				});
+			});
+		} catch (err) {
+			console.warn(`Failed to subscribe to ${type}`);
+		}
 	}
 
 	/**
