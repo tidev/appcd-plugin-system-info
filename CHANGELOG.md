@@ -1,4 +1,4 @@
-# v1.3.0
+# v1.3.0 (Mar 29, 2019)
 
  * Upgraded to Gulp 4.
  * Update dependencies
