@@ -13,9 +13,8 @@ The `info` service aggregates the info from the
 [windows](https://npmjs.org/package/appcd-plugin-windows) plugins.
 
 ```js
-appcd.call('/system-info/latest/info', ctx => {
-	console.log(ctx.response);
-});
+const { response } = await appcd.call('/system-info/latest/info');
+console.log(response);
 ```
 
 ## Legal
