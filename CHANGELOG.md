@@ -1,3 +1,7 @@
+# v2.0.0
+
+ * BREAKING CHANGE: Schema changes introduced by Android and iOS plugin schema changes.
+
 # v1.5.0 (Aug 15, 2019)
 
  * chore: Added Appc Daemon v3 to list of compatible appcd versions.
