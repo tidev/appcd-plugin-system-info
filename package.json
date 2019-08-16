@@ -22,9 +22,9 @@
   "devDependencies": {
     "appcd-gulp": "^2.2.0"
   },
-  "homepage": "https://github.com/appcelerator/appc-daemon-plugins/tree/master/packages/appcd-plugin-system-info",
-  "bugs": "https://github.com/appcelerator/appc-daemon-plugins/issues",
-  "repository": "https://github.com/appcelerator/appc-daemon-plugins",
+  "homepage": "https://github.com/appcelerator/appc-daemon",
+  "bugs": "https://github.com/appcelerator/appcd-plugin-system-info/issues",
+  "repository": "https://github.com/appcelerator/appcd-plugin-system-info",
   "appcd": {
     "appcdVersion": "1.x || 2.x || 3.x",
     "name": "system-info",
