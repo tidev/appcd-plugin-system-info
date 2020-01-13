@@ -1,7 +1,14 @@
+# v2.0.0 (Jan 13, 2020)
+
+ * BREAKING CHANGE: Updated to v2.x for `android`, `ios`, and `windows` plugins.
+ * chore: Switched to new `appcd.apiVersion`.
+   [(DAEMON-309)](https://jira.appcelerator.org/browse/DAEMON-309)
+ * chore: Updated dependencies.
+
 # v1.5.0 (Aug 15, 2019)
 
  * chore: Added Appc Daemon v3 to list of compatible appcd versions.
- * chore: Update dependencies.
+ * chore: Updated dependencies.
 
 # v1.4.0 (Jun 6, 2019)
 
