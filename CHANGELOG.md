@@ -1,3 +1,9 @@
+# v1.5.1 (Jan 13, 2020)
+
+ * chore: Switched to new `appcd.apiVersion`.
+   [(DAEMON-309)](https://jira.appcelerator.org/browse/DAEMON-309)
+ * chore: Updated dependencies.
+
 # v1.5.0 (Aug 15, 2019)
 
  * chore: Added Appc Daemon v3 to list of compatible appcd versions.
