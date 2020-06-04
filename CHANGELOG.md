@@ -1,4 +1,9 @@
-# v2.0.0
+# v2.0.1 (Jun 4, 2020)
+
+ * chore: Added API version 2.x.
+ * chore: Updated dependencies.
+
+# v2.0.0 (Jan 13, 2020)
 
  * BREAKING CHANGE: Schema changes introduced by Android and iOS plugin schema changes.
 
