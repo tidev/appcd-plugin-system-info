@@ -1,3 +1,10 @@
+# v3.0.0
+
+ * BREAKING CHANGE: Removed Genymotion info.
+   [(DAEMON-313)](https://jira.appcelerator.org/browse/DAEMON-313)
+ * chore: Added API version 2.x.
+ * chore: Updated dependencies
+
 # v2.0.0 (Jan 13, 2020)
 
  * BREAKING CHANGE: Updated to v2.x for `android`, `ios`, and `windows` plugins.

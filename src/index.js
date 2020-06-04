@@ -20,7 +20,6 @@ import { isFile } from 'appcd-fs';
  */
 const dependencies = {
 	android:            '/android/2.x/info',
-	genymotion:         '/genymotion/1.x/info',
 	ios:                '/ios/2.x/info',
 	jdks:               '/jdk/1.x/info',
 	'titanium/sdks':    '/titanium/1.x/sdk/list',
@@ -41,7 +40,6 @@ class SystemInfoService extends DataServiceDispatcher {
 	activate() {
 		this.data = gawk({
 			android: null,
-			genymotion: null,
 			ios: null,
 			jdks: null,
 			node: {
@@ -73,9 +71,6 @@ class SystemInfoService extends DataServiceDispatcher {
 
 			// subscribe to android service
 			this.wireup('android'),
-
-			// subscribe to genymotion service
-			this.wireup('genymotion'),
 
 			// subscribe to ios service
 			process.platform === 'darwin' && this.wireup('ios'),
