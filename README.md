@@ -6,7 +6,6 @@ Detects system information.
 
 The `info` service aggregates the info from the
 [android](https://npmjs.org/package/appcd-plugin-android),
-[genymotion](https://npmjs.org/package/appcd-plugin-genymotion),
 [ios](https://npmjs.org/package/appcd-plugin-ios),
 [jdk](https://npmjs.org/package/appcd-plugin-jdk),
 [titanium-sdk](https://npmjs.org/package/appcd-plugin-titanium-sdk), and
